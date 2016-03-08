@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Validating account numbers",
   "author": "Uphold",
-  "license": "SEE LICENSE IN LICENSE",
+  "license": "MIT",
   "homepage": "https://github.com/uphold/uk-modulus-checking",
   "bugs": "https://github.com/uphold/uk-modulus-checking/issues",
   "repository": {
@@ -19,16 +19,12 @@
   },
   "scripts": {
     "changelog": "github_changelog_generator --no-issues --header-label='# Changelog'",
-    "cover": "babel-node node_modules/.bin/isparta cover --report html _mocha -- $npm_package_options_mocha",
     "lint": "eslint src test && jscs src test",
     "prepublish": "npm run transpile",
     "testdocker": "docker-compose run --rm sut",
     "test": "mocha $npm_package_options_mocha",
     "transpile": "rm -rf dist/* && babel src --out-dir dist",
     "version": "npm run changelog -- --future-release=$npm_package_version && sed -i '' -e :a -e '$d;N;2,3ba' -e 'P;D' CHANGELOG.md && npm run transpile && git add -A CHANGELOG.md dist"
-  },
-  "dependencies": {
-    "n-readlines": "^0.2.2"
   },
   "devDependencies": {
     "babel-cli": "^6.4.0",
