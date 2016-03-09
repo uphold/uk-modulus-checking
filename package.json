@@ -1,6 +1,6 @@
 {
   "name": "uk-modulus-checking",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Validate a UK bank account number against a sort code using the VocaLink modulus check",
   "author": "Uphold",
   "license": "MIT",
