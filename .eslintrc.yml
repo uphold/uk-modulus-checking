@@ -1,6 +1,5 @@
 extends: seegno
 
 rules:
-  complexity: [2, 12]
   id-length: 0
   no-sync: 0

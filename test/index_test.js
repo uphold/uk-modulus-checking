@@ -52,13 +52,13 @@ const accounts = {
 
 describe('UkModulusChecking', () => {
   describe('isValid()', () => {
-    accounts.invalid.forEach((account) => {
+    accounts.invalid.forEach(account => {
       it(`should return false if sort code is ${account.sortCode} and account number is ${account.accountNumber}`, () => {
         new UkModulusChecking({ accountNumber: account.accountNumber, sortCode: account.sortCode }).isValid().should.be.false();
       });
     });
 
-    accounts.valid.forEach((account) => {
+    accounts.valid.forEach(account => {
       it(`should return true if sort code is ${account.sortCode} and account number is ${account.accountNumber}`, () => {
         new UkModulusChecking({ accountNumber: account.accountNumber, sortCode: account.sortCode }).isValid().should.be.true();
       });
