@@ -3,8 +3,8 @@
  * Module dependencies.
  */
 
-import { positions } from './constants';
 import fs from 'fs';
+import { positions } from './constants';
 
 /**
  * Export UkModulusChecking.
@@ -198,42 +198,42 @@ export default class UkModulusChecking {
    * Is valid.
    */
 
-   isValid() {
-     const checks = this.getSortCodeChecks();
+  isValid() {
+    const checks = this.getSortCodeChecks();
 
-     // If no range is found that contains the sorting code, there is no modulus check that can be performed.
-     // The sorting code and account number should be presumed valid unless other evidence implies otherwise.
-     if (checks.length === 0) {
-       return true;
-     }
+    // If no range is found that contains the sorting code, there is no modulus check that can be performed.
+    // The sorting code and account number should be presumed valid unless other evidence implies otherwise.
+    if (checks.length === 0) {
+      return true;
+    }
 
-     const firstCheck = checks[0];
+    const firstCheck = checks[0];
 
-     if (this.isCheckValid(firstCheck)) {
-       if (checks.length === 1 || [2, 9, 10, 11, 12, 13, 14].indexOf(firstCheck.exception) !== -1) {
-         return true;
-       }
+    if (this.isCheckValid(firstCheck)) {
+      if (checks.length === 1 || [2, 9, 10, 11, 12, 13, 14].indexOf(firstCheck.exception) !== -1) {
+        return true;
+      }
 
-       // Verify second check.
-       return this.isCheckValid(checks[1]);
-     }
+      // Verify second check.
+      return this.isCheckValid(checks[1]);
+    }
 
-     if (firstCheck.exception === 14) {
-       if ([0, 1, 9].indexOf(parseInt(this.accountNumber.charAt(7), 10)) === -1) {
-         return false;
-       }
+    if (firstCheck.exception === 14) {
+      if ([0, 1, 9].indexOf(parseInt(this.accountNumber.charAt(7), 10)) === -1) {
+        return false;
+      }
 
-       //  If the 8th digit is 0, 1 or 9, then remove the digit from the account number and insert a 0 as the 1st digit for check purposes only
-       return this.isCheckValid(checks[0], `0${this.accountNumber.substring(7, 0)}`);
-     }
+      //  If the 8th digit is 0, 1 or 9, then remove the digit from the account number and insert a 0 as the 1st digit for check purposes only
+      return this.isCheckValid(checks[0], `0${this.accountNumber.substring(7, 0)}`);
+    }
 
-     if (checks.length === 1 || [2, 9, 10, 11, 12, 13, 14].indexOf(firstCheck.exception) === -1) {
-       return false;
-     }
+    if (checks.length === 1 || [2, 9, 10, 11, 12, 13, 14].indexOf(firstCheck.exception) === -1) {
+      return false;
+    }
 
-     // Verify second check.
-     return this.isCheckValid(checks[1]);
-   }
+    // Verify second check.
+    return this.isCheckValid(checks[1]);
+  }
 
   /**
    * Load scsubtab file.
@@ -243,7 +243,7 @@ export default class UkModulusChecking {
     const content = fs.readFileSync(`${__dirname}/data/scsubtab.txt`, 'utf8');
     const scsubtab = [];
 
-    content.split('\r\n').forEach((line) => {
+    content.split('\r\n').forEach(line => {
       const data = line.split(/\s+/);
 
       scsubtab.push({
@@ -263,7 +263,7 @@ export default class UkModulusChecking {
     const content = fs.readFileSync(`${__dirname}/data/valacdos-v370.txt`, 'utf8');
     const valacdos = [];
 
-    content.split('\r\n').forEach((line) => {
+    content.split('\r\n').forEach(line => {
       const data = line.split(/\s+/);
 
       /* jscs:disable validateOrderInObjectKeys */
@@ -297,9 +297,9 @@ export default class UkModulusChecking {
    * Pick position in number.
    */
 
-   pickPosition(number, position) {
-     return parseInt(number.charAt(positions[position]), 10);
-   }
+  pickPosition(number, position) {
+    return parseInt(number.charAt(positions[position]), 10);
+  }
 
   /**
    * Sanitize.
