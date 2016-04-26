@@ -52,6 +52,18 @@ const accounts = {
 
 describe('UkModulusChecking', () => {
   describe('isValid()', () => {
+    it('should return false if account number length is less than 6', () => {
+      new UkModulusChecking({ accountNumber: '12345', sortCode: '123456' }).isValid().should.be.false();
+    });
+
+    it('should return false if account number length is greater than 10', () => {
+      new UkModulusChecking({ accountNumber: '12345678901', sortCode: '123456' }).isValid().should.be.false();
+    });
+
+    it('should return false if sort code length is not 6', () => {
+      new UkModulusChecking({ accountNumber: '12345789', sortCode: '12345' }).isValid().should.be.false();
+    });
+
     accounts.invalid.forEach((account) => {
       it(`should return false if sort code is ${account.sortCode} and account number is ${account.accountNumber}`, () => {
         new UkModulusChecking({ accountNumber: account.accountNumber, sortCode: account.sortCode }).isValid().should.be.false();
