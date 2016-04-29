@@ -277,6 +277,10 @@ var UkModulusChecking = function () {
   }, {
     key: 'isValid',
     value: function isValid() {
+      if (this.accountNumber.length < 6 || this.accountNumber.length > 10 || this.sortCode.length !== 6) {
+        return false;
+      }
+
       var checks = this.getSortCodeChecks();
 
       // If no range is found that contains the sorting code, there is no modulus check that can be performed.
