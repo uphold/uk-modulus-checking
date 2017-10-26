@@ -346,7 +346,7 @@ var UkModulusChecking = function () {
   }, {
     key: 'loadValacdos',
     value: function loadValacdos() {
-      var content = _fs2.default.readFileSync(__dirname + '/data/valacdos-v440.txt', 'utf8');
+      var content = _fs2.default.readFileSync(__dirname + '/data/valacdos-v460.txt', 'utf8');
       var valacdos = [];
 
       content.split('\r\n').forEach(function (line) {
