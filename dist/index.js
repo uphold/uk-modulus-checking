@@ -30,10 +30,10 @@ var UkModulusChecking = function () {
    */
 
   function UkModulusChecking(_ref) {
-    var _ref$accountNumber = _ref.accountNumber;
-    var accountNumber = _ref$accountNumber === undefined ? '' : _ref$accountNumber;
-    var _ref$sortCode = _ref.sortCode;
-    var sortCode = _ref$sortCode === undefined ? '' : _ref$sortCode;
+    var _ref$accountNumber = _ref.accountNumber,
+        accountNumber = _ref$accountNumber === undefined ? '' : _ref$accountNumber,
+        _ref$sortCode = _ref.sortCode,
+        sortCode = _ref$sortCode === undefined ? '' : _ref$sortCode;
 
     _classCallCheck(this, UkModulusChecking);
 
@@ -346,7 +346,7 @@ var UkModulusChecking = function () {
   }, {
     key: 'loadValacdos',
     value: function loadValacdos() {
-      var content = _fs2.default.readFileSync(__dirname + '/data/valacdos-v480-updated.txt', 'utf8');
+      var content = _fs2.default.readFileSync(__dirname + '/data/valacdos-v530-updated.txt', 'utf8');
       var valacdos = [];
 
       content.split('\r\n').forEach(function (line) {
