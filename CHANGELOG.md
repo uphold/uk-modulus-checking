@@ -1,7 +1,14 @@
 # Changelog
 
-## [0.0.7](https://github.com/uphold/uk-modulus-checking/tree/0.0.7) (2018-11-13)
-[Full Changelog](https://github.com/uphold/uk-modulus-checking/compare/v0.0.6...0.0.7)
+## [0.1.0](https://github.com/uphold/uk-modulus-checking/tree/0.1.0) (2019-01-18)
+[Full Changelog](https://github.com/uphold/uk-modulus-checking/compare/v0.0.7...0.1.0)
+
+**Merged pull requests:**
+
+- Add `babel-plugin-static-fs` [\#15](https://github.com/uphold/uk-modulus-checking/pull/15) ([nunofgs](https://github.com/nunofgs))
+
+## [v0.0.7](https://github.com/uphold/uk-modulus-checking/tree/v0.0.7) (2018-11-13)
+[Full Changelog](https://github.com/uphold/uk-modulus-checking/compare/v0.0.6...v0.0.7)
 
 **Merged pull requests:**
 
