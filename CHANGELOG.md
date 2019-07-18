@@ -1,7 +1,14 @@
 # Changelog
 
-## [0.1.1](https://github.com/uphold/uk-modulus-checking/tree/0.1.1) (2019-02-05)
-[Full Changelog](https://github.com/uphold/uk-modulus-checking/compare/v0.1.0...0.1.1)
+## [0.1.2](https://github.com/uphold/uk-modulus-checking/tree/0.1.2) (2019-07-18)
+[Full Changelog](https://github.com/uphold/uk-modulus-checking/compare/v0.1.1...0.1.2)
+
+**Merged pull requests:**
+
+- Update Vocalink data sets to versions valid as of 27/05/2019 [\#17](https://github.com/uphold/uk-modulus-checking/pull/17) ([gunjam](https://github.com/gunjam))
+
+## [v0.1.1](https://github.com/uphold/uk-modulus-checking/tree/v0.1.1) (2019-02-05)
+[Full Changelog](https://github.com/uphold/uk-modulus-checking/compare/v0.1.0...v0.1.1)
 
 **Merged pull requests:**
 
