@@ -264,12 +264,11 @@ export default class UkModulusChecking {
    */
 
   loadValacdos() {
-    const content = fs.readFileSync(`${__dirname}/data/valacdos-v570-updated.txt`, 'utf8');
+    const content = fs.readFileSync(`${__dirname}/data/valacdos-v612-updated.txt`, 'utf8');
     const valacdos = [];
 
     content.split('\r\n').forEach((line) => {
       const data = line.split(/\s+/);
-
       /* jscs:disable validateOrderInObjectKeys */
       valacdos.push({
         start: parseInt(data[0], 10),
