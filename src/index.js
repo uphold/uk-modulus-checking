@@ -269,6 +269,7 @@ export default class UkModulusChecking {
 
     content.split('\r\n').forEach((line) => {
       const data = line.split(/\s+/);
+
       /* jscs:disable validateOrderInObjectKeys */
       valacdos.push({
         start: parseInt(data[0], 10),
