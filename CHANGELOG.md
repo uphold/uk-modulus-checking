@@ -1,7 +1,15 @@
 # Changelog
 
-## [0.1.2](https://github.com/uphold/uk-modulus-checking/tree/0.1.2) (2019-07-18)
-[Full Changelog](https://github.com/uphold/uk-modulus-checking/compare/v0.1.1...0.1.2)
+## [0.1.3](https://github.com/uphold/uk-modulus-checking/tree/0.1.3) (2020-08-03)
+[Full Changelog](https://github.com/uphold/uk-modulus-checking/compare/v0.1.2...0.1.3)
+
+**Merged pull requests:**
+
+- Updating Vocalink to v612 \(12 JUNE 2020\) [\#21](https://github.com/uphold/uk-modulus-checking/pull/21) ([htmlandbacon](https://github.com/htmlandbacon))
+- Add MIT license [\#18](https://github.com/uphold/uk-modulus-checking/pull/18) ([NelsonBrandao](https://github.com/NelsonBrandao))
+
+## [v0.1.2](https://github.com/uphold/uk-modulus-checking/tree/v0.1.2) (2019-07-18)
+[Full Changelog](https://github.com/uphold/uk-modulus-checking/compare/v0.1.1...v0.1.2)
 
 **Merged pull requests:**
 
