@@ -1,7 +1,14 @@
 # Changelog
 
-## [0.1.3](https://github.com/uphold/uk-modulus-checking/tree/0.1.3) (2020-08-03)
-[Full Changelog](https://github.com/uphold/uk-modulus-checking/compare/v0.1.2...0.1.3)
+## [0.1.4](https://github.com/uphold/uk-modulus-checking/tree/0.1.4) (2020-12-11)
+[Full Changelog](https://github.com/uphold/uk-modulus-checking/compare/v0.1.3...0.1.4)
+
+**Merged pull requests:**
+
+- Update Vocalink data sets to v640 valid as of 12/10/2020 [\#23](https://github.com/uphold/uk-modulus-checking/pull/23) ([solanki-das](https://github.com/solanki-das))
+
+## [v0.1.3](https://github.com/uphold/uk-modulus-checking/tree/v0.1.3) (2020-08-03)
+[Full Changelog](https://github.com/uphold/uk-modulus-checking/compare/v0.1.2...v0.1.3)
 
 **Merged pull requests:**
 
