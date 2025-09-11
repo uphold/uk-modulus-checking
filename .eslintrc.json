@@ -1,0 +1,23 @@
+{
+  "root": true,
+  "env": {
+    "node": true,
+    "es2021": true,
+    "mocha": true
+  },
+  "parser": "@babel/eslint-parser",
+  "parserOptions": {
+    "requireConfigFile": false,
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "rules": {
+    "complexity": ["error", 14],
+    "id-length": 0,
+    "no-sync": 0,
+    "no-unused-expressions": "off",
+    "keyword-spacing": ["error", { "before": true, "after": true }],
+    "no-confusing-arrow": "error",
+    "no-constant-condition": "error"
+  }
+}

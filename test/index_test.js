@@ -3,7 +3,8 @@
  * Module dependencies.
  */
 
-import UkModulusChecking from './../src';
+import UkModulusChecking from './../src/index.js';
+import { expect } from 'chai';
 
 const accounts = {
   invalid: [
@@ -17,6 +18,7 @@ const accounts = {
     { accountNumber: '88837493', sortCode: '107999' }
   ],
   valid: [
+    { accountNumber: '12345678', sortCode: '040006' },
     { accountNumber: '00000190', sortCode: '180002' },
     { accountNumber: '02355688', sortCode: '309070' },
     { accountNumber: '06774744', sortCode: '086090' },
@@ -49,30 +51,34 @@ const accounts = {
 /**
  * Test `UkModulusChecking`.
  */
-
 describe('UkModulusChecking', () => {
   describe('isValid()', () => {
     it('should return false if account number length is less than 6', () => {
-      new UkModulusChecking({ accountNumber: '12345', sortCode: '123456' }).isValid().should.be.false();
+      const result = new UkModulusChecking({ accountNumber: '12345', sortCode: '123456' }).isValid();
+      expect(result).to.be.false;
     });
 
     it('should return false if account number length is greater than 10', () => {
-      new UkModulusChecking({ accountNumber: '12345678901', sortCode: '123456' }).isValid().should.be.false();
+      const result = new UkModulusChecking({ accountNumber: '12345678901', sortCode: '123456' }).isValid();
+      expect(result).to.be.false;
     });
 
     it('should return false if sort code length is not 6', () => {
-      new UkModulusChecking({ accountNumber: '12345789', sortCode: '12345' }).isValid().should.be.false();
+      const result = new UkModulusChecking({ accountNumber: '12345789', sortCode: '12345' }).isValid();
+      expect(result).to.be.false;
     });
 
     accounts.invalid.forEach((account) => {
       it(`should return false if sort code is ${account.sortCode} and account number is ${account.accountNumber}`, () => {
-        new UkModulusChecking({ accountNumber: account.accountNumber, sortCode: account.sortCode }).isValid().should.be.false();
+        const result = new UkModulusChecking({ accountNumber: account.accountNumber, sortCode: account.sortCode }).isValid();
+        expect(result).to.be.false;
       });
     });
 
     accounts.valid.forEach((account) => {
       it(`should return true if sort code is ${account.sortCode} and account number is ${account.accountNumber}`, () => {
-        new UkModulusChecking({ accountNumber: account.accountNumber, sortCode: account.sortCode }).isValid().should.be.true();
+        const result = new UkModulusChecking({ accountNumber: account.accountNumber, sortCode: account.sortCode }).isValid();
+        expect(result).to.be.true;
       });
     });
   });

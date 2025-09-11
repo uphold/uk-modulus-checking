@@ -3,8 +3,13 @@
  * Module dependencies.
  */
 
-import { positions } from './constants';
+import { positions } from './constants.js';
 import fs from 'fs';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 /**
  * Export UkModulusChecking.
@@ -264,7 +269,7 @@ export default class UkModulusChecking {
    */
 
   loadValacdos() {
-    const content = fs.readFileSync(`${__dirname}/data/valacdos-v640-updated.txt`, 'utf8');
+    const content = fs.readFileSync(`${__dirname}/data/valacdos-v850-updated.txt`, 'utf8');
     const valacdos = [];
 
     content.split('\r\n').forEach((line) => {

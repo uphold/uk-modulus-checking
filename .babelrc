@@ -1,4 +1,8 @@
 {
-  "plugins": ["add-module-exports", "static-fs"],
-  "presets": ["es2015"]
+  "presets": [
+    ["@babel/preset-env", { "targets": { "node": "current" } }]
+  ],
+  "plugins": [
+    "static-fs"
+  ]
 }
