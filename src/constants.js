@@ -1,5 +1,4 @@
 
-/* jscs:disable validateOrderInObjectKeys */
 export const positions = {
   u: 0,
   v: 1,
@@ -16,4 +15,3 @@ export const positions = {
   g: 12,
   h: 13
 };
-/* jscs:enable validateOrderInObjectKeys */

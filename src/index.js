@@ -275,7 +275,6 @@ export default class UkModulusChecking {
     content.split('\r\n').forEach((line) => {
       const data = line.split(/\s+/);
 
-      /* jscs:disable validateOrderInObjectKeys */
       valacdos.push({
         start: parseInt(data[0], 10),
         end: parseInt(data[1], 10),
@@ -296,7 +295,6 @@ export default class UkModulusChecking {
         h: parseInt(data[16], 10),
         exception: parseInt(data[17], 10) || null
       });
-      /* jscs:enable validateOrderInObjectKeys */
     });
 
     return valacdos;

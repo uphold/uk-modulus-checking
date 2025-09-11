@@ -4,7 +4,6 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-/* jscs:disable validateOrderInObjectKeys */
 var positions = exports.positions = {
   u: 0,
   v: 1,
@@ -21,4 +20,3 @@ var positions = exports.positions = {
   g: 12,
   h: 13
 };
-/* jscs:enable validateOrderInObjectKeys */

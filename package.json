@@ -20,7 +20,7 @@
   },
   "scripts": {
     "changelog": "github_changelog_generator --no-issues --header-label='# Changelog'",
-    "lint": "eslint src test && jscs src test",
+    "lint": "eslint src test",
     "prepublish": "npm run transpile",
     "testdocker": "docker-compose run --rm sut",
     "test": "mocha",
@@ -37,8 +37,6 @@
     "chai": "^6.0.1",
     "eslint": "^8.57.1",
     "eslint-plugin-babel": "^3.0.0",
-    "jscs": "^2.7.0",
-    "jscs-config-seegno": "^1.0.0",
     "mocha": "^11.7.2",
     "pre-commit": "^1.1.2",
     "should": "^8.0.0"
