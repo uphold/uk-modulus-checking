@@ -5,6 +5,7 @@
 
 import { positions } from './constants';
 import fs from 'fs';
+import path from 'path';
 
 /**
  * Export UkModulusChecking.
@@ -244,7 +245,7 @@ export default class UkModulusChecking {
    */
 
   loadScsubtab() {
-    const content = fs.readFileSync(`${__dirname}/data/scsubtab.txt`, 'utf8');
+    const content = fs.readFileSync(path.join(__dirname, 'data', 'scsubtab.txt'), 'utf8');
     const scsubtab = [];
 
     content.split('\r\n').forEach((line) => {
@@ -264,7 +265,7 @@ export default class UkModulusChecking {
    */
 
   loadValacdos() {
-    const content = fs.readFileSync(`${__dirname}/data/valacdos-v640-updated.txt`, 'utf8');
+    const content = fs.readFileSync(path.join(__dirname, 'data', 'valacdos-v900.txt'), 'utf8');
     const valacdos = [];
 
     content.split('\r\n').forEach((line) => {
