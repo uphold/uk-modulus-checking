@@ -2,7 +2,7 @@
 Modulus checking allows payment originators to confirm that customer codes and account numbers are compatible before submitting a Bacs Direct Credit of Direct Debit.
 
 ## Status
-[![npm version][npm-image]][npm-url] [![build status][travis-image]][travis-url]
+[![npm version][npm-image]][npm-url] [![build status][ci-image]][ci-url]
 
 ## Installation
 Install the package via `npm`:
@@ -48,9 +48,9 @@ npm test
 
 ## Release
 
-```sh
-npm version [<newversion> | major | minor | patch] -m "Release %s"
-```
+Releases are automated. Trigger the [Release](https://github.com/uphold/uk-modulus-checking/actions/workflows/release.yaml) workflow on `master` and pick the version bump (`major`, `minor` or `patch`).
+
+The workflow bumps the version, rebuilds `dist`, updates the `CHANGELOG.md`, commits and tags the release, publishes to npm and creates the GitHub release.
 
 ## License
 MIT
@@ -60,5 +60,5 @@ Many thanks to [bazerk/uk-modulus-checking](https://github.com/bazerk/uk-modulus
 
 [npm-image]: https://img.shields.io/npm/v/uk-modulus-checking.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/uk-modulus-checking
-[travis-image]: https://img.shields.io/travis/uphold/uk-modulus-checking.svg?style=flat-square
-[travis-url]: https://img.shields.io/travis/uphold/uk-modulus-checking.svg?style=flat-square
+[ci-image]: https://img.shields.io/github/actions/workflow/status/uphold/uk-modulus-checking/tests.yaml?branch=master&style=flat-square
+[ci-url]: https://github.com/uphold/uk-modulus-checking/actions/workflows/tests.yaml
