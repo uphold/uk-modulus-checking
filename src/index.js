@@ -1,4 +1,3 @@
-
 /**
  * Module dependencies.
  */
@@ -12,7 +11,6 @@ import path from 'path';
  */
 
 export default class UkModulusChecking {
-
   /**
    * Constructor.
    */
@@ -48,12 +46,27 @@ export default class UkModulusChecking {
     if (check.exception === 10) {
       const ab = number.charAt(positions.a) + number.charAt(positions.b);
 
-      if (ab === '09' || ab === '99' && this.pickPosition(number, 'b') === 9) {
+      if (ab === '09' || (ab === '99' && this.pickPosition(number, 'b') === 9)) {
         return [0, 0, 0, 0, 0, 0, 0, 0, check.c, check.d, check.e, check.f, check.g, check.h];
       }
     }
 
-    return [check.u, check.v, check.w, check.x, check.y, check.z, check.a, check.b, check.c, check.d, check.e, check.f, check.g, check.h];
+    return [
+      check.u,
+      check.v,
+      check.w,
+      check.x,
+      check.y,
+      check.z,
+      check.a,
+      check.b,
+      check.c,
+      check.d,
+      check.e,
+      check.f,
+      check.g,
+      check.h
+    ];
   }
 
   /**
@@ -61,7 +74,7 @@ export default class UkModulusChecking {
    */
 
   getNumber(check, number) {
-    let sortCode = this.sortCode;
+    let { sortCode } = this;
 
     number = number || this.accountNumber;
 
@@ -123,7 +136,12 @@ export default class UkModulusChecking {
       return true;
     }
 
-    if (check.exception === 6 && this.pickPosition(number, 'a') >= 4 && this.pickPosition(number, 'a') <= 8 && this.pickPosition(number, 'g') === this.pickPosition(number, 'h')) {
+    if (
+      check.exception === 6 &&
+      this.pickPosition(number, 'a') >= 4 &&
+      this.pickPosition(number, 'a') <= 8 &&
+      this.pickPosition(number, 'g') === this.pickPosition(number, 'h')
+    ) {
       return true;
     }
 
@@ -199,46 +217,46 @@ export default class UkModulusChecking {
    * Is valid.
    */
 
-   isValid() {
-     if (this.accountNumber.length < 6 || this.accountNumber.length > 10 || this.sortCode.length !== 6) {
-       return false;
-     }
+  isValid() {
+    if (this.accountNumber.length < 6 || this.accountNumber.length > 10 || this.sortCode.length !== 6) {
+      return false;
+    }
 
-     const checks = this.getSortCodeChecks();
+    const checks = this.getSortCodeChecks();
 
-     // If no range is found that contains the sorting code, there is no modulus check that can be performed.
-     // The sorting code and account number should be presumed valid unless other evidence implies otherwise.
-     if (checks.length === 0) {
-       return true;
-     }
+    // If no range is found that contains the sorting code, there is no modulus check that can be performed.
+    // The sorting code and account number should be presumed valid unless other evidence implies otherwise.
+    if (checks.length === 0) {
+      return true;
+    }
 
-     const firstCheck = checks[0];
+    const [firstCheck] = checks;
 
-     if (this.isCheckValid(firstCheck)) {
-       if (checks.length === 1 || [2, 9, 10, 11, 12, 13, 14].indexOf(firstCheck.exception) !== -1) {
-         return true;
-       }
+    if (this.isCheckValid(firstCheck)) {
+      if (checks.length === 1 || [2, 9, 10, 11, 12, 13, 14].indexOf(firstCheck.exception) !== -1) {
+        return true;
+      }
 
-       // Verify second check.
-       return this.isCheckValid(checks[1]);
-     }
+      // Verify second check.
+      return this.isCheckValid(checks[1]);
+    }
 
-     if (firstCheck.exception === 14) {
-       if ([0, 1, 9].indexOf(parseInt(this.accountNumber.charAt(7), 10)) === -1) {
-         return false;
-       }
+    if (firstCheck.exception === 14) {
+      if ([0, 1, 9].indexOf(parseInt(this.accountNumber.charAt(7), 10)) === -1) {
+        return false;
+      }
 
-       //  If the 8th digit is 0, 1 or 9, then remove the digit from the account number and insert a 0 as the 1st digit for check purposes only
-       return this.isCheckValid(checks[0], `0${this.accountNumber.substring(7, 0)}`);
-     }
+      //  If the 8th digit is 0, 1 or 9, then remove the digit from the account number and insert a 0 as the 1st digit for check purposes only.
+      return this.isCheckValid(checks[0], `0${this.accountNumber.substring(7, 0)}`);
+    }
 
-     if (checks.length === 1 || [2, 9, 10, 11, 12, 13, 14].indexOf(firstCheck.exception) === -1) {
-       return false;
-     }
+    if (checks.length === 1 || [2, 9, 10, 11, 12, 13, 14].indexOf(firstCheck.exception) === -1) {
+      return false;
+    }
 
-     // Verify second check.
-     return this.isCheckValid(checks[1]);
-   }
+    // Verify second check.
+    return this.isCheckValid(checks[1]);
+  }
 
   /**
    * Load scsubtab file.
@@ -248,7 +266,7 @@ export default class UkModulusChecking {
     const content = fs.readFileSync(path.join(__dirname, 'data', 'scsubtab.txt'), 'utf8');
     const scsubtab = [];
 
-    content.split('\r\n').forEach((line) => {
+    content.split('\r\n').forEach(line => {
       const data = line.split(/\s+/);
 
       scsubtab.push({
@@ -268,10 +286,10 @@ export default class UkModulusChecking {
     const content = fs.readFileSync(path.join(__dirname, 'data', 'valacdos-v900.txt'), 'utf8');
     const valacdos = [];
 
-    content.split('\r\n').forEach((line) => {
+    content.split('\r\n').forEach(line => {
       const data = line.split(/\s+/);
 
-      /* jscs:disable validateOrderInObjectKeys */
+      /* eslint-disable sort-keys-fix/sort-keys-fix */
       valacdos.push({
         start: parseInt(data[0], 10),
         end: parseInt(data[1], 10),
@@ -292,7 +310,7 @@ export default class UkModulusChecking {
         h: parseInt(data[16], 10),
         exception: parseInt(data[17], 10) || null
       });
-      /* jscs:enable validateOrderInObjectKeys */
+      /* eslint-enable sort-keys-fix/sort-keys-fix */
     });
 
     return valacdos;
@@ -302,9 +320,9 @@ export default class UkModulusChecking {
    * Pick position in number.
    */
 
-   pickPosition(number, position) {
-     return parseInt(number.charAt(positions[position]), 10);
-   }
+  pickPosition(number, position) {
+    return parseInt(number.charAt(positions[position]), 10);
+  }
 
   /**
    * Sanitize.
