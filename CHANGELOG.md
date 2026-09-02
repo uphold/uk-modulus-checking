@@ -1,7 +1,11 @@
 # Changelog
 
-## [0.1.4](https://github.com/uphold/uk-modulus-checking/tree/0.1.4) (2020-12-11)
-[Full Changelog](https://github.com/uphold/uk-modulus-checking/compare/v0.1.3...0.1.4)
+## [v0.1.5](https://github.com/uphold/uk-modulus-checking/releases/tag/v0.1.5) (2026-09-02)
+
+- Update Vocalink data sets to v900 valid as of 15/08/2026 [\#29](https://github.com/uphold/uk-modulus-checking/pull/29) ([pedropiloto](https://github.com/pedropiloto))
+
+## [v0.1.4](https://github.com/uphold/uk-modulus-checking/tree/v0.1.4) (2020-12-11)
+[Full Changelog](https://github.com/uphold/uk-modulus-checking/compare/v0.1.3...v0.1.4)
 
 **Merged pull requests:**
 
