@@ -1,0 +1,86 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'The tag to release (e.g. v0.2.0)'
+        required: true
+        type: string
+
+permissions: {}
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    environment: release
+    concurrency:
+      group: release-${{ github.event.inputs.tag || github.ref_name }}
+      cancel-in-progress: false
+    permissions:
+      contents: write
+      id-token: write
+
+    steps:
+    - name: Resolve version tag
+      id: resolve-version-tag
+      run: echo "tag=${{ github.event.inputs.tag || github.ref_name }}" >> "$GITHUB_OUTPUT"
+
+    - name: Check for existing GitHub release
+      id: check-github-release
+      env:
+        GH_TOKEN: ${{ github.token }}
+      run: |
+        if gh release view "${{ steps.resolve-version-tag.outputs.tag }}" --repo "${{ github.repository }}" >/dev/null 2>&1; then
+          echo "GitHub release ${{ steps.resolve-version-tag.outputs.tag }} already exists, skipping"
+          echo "exists=true" >> "$GITHUB_OUTPUT"
+        else
+          echo "exists=false" >> "$GITHUB_OUTPUT"
+        fi
+
+    - name: Checkout code
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      with:
+        ref: ${{ steps.resolve-version-tag.outputs.tag }}
+        fetch-depth: 0
+        persist-credentials: false
+
+    - name: Setup Node.js version
+      uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+      with:
+        node-version: 24
+        registry-url: https://registry.npmjs.org/
+
+    # OIDC trusted publishing requires npm v11.5.1+.
+    - name: Update npm
+      run: npm install -g npm@12.0.2
+
+    - name: Check for existing npm release
+      id: npmRelease
+      run: |
+        NAME=$(node -p "require('./package.json').name")
+        VERSION=$(node -p "require('./package.json').version")
+        if npm view "$NAME@$VERSION" version >/dev/null 2>&1; then
+          echo "$NAME@$VERSION is already published, skipping"
+          echo "exists=true" >> "$GITHUB_OUTPUT"
+        else
+          echo "exists=false" >> "$GITHUB_OUTPUT"
+        fi
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Generate release
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
+      run: |
+        GITHUB_RELEASE_ARG=--github.release
+        NPM_PUBLISH_ARG=--npm.publish
+
+        [[ "${{ steps.check-github-release.outputs.exists }}" == 'true' ]] && GITHUB_RELEASE_ARG=--no-github.release
+        [[ "${{ steps.npmRelease.outputs.exists }}" == 'true' ]] && NPM_PUBLISH_ARG=--no-npm.publish
+
+        npx release-it --no-increment --no-git "$GITHUB_RELEASE_ARG" "$NPM_PUBLISH_ARG"
